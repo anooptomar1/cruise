@@ -1,0 +1,513 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		22037EC11E51622000DFEC6A /* GameUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22037EBF1E51622000DFEC6A /* GameUtils.swift */; };
+		22037EC21E51622000DFEC6A /* SCNVector3+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22037EC01E51622000DFEC6A /* SCNVector3+Extensions.swift */; };
+		226ACBD11E4EC86300AC3CCC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226ACBD01E4EC86300AC3CCC /* AppDelegate.swift */; };
+		226ACBD51E4EC86300AC3CCC /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226ACBD41E4EC86300AC3CCC /* GameViewController.swift */; };
+		226ACBD81E4EC86300AC3CCC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 226ACBD61E4EC86300AC3CCC /* Main.storyboard */; };
+		226ACBDA1E4EC86300AC3CCC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 226ACBD91E4EC86300AC3CCC /* Assets.xcassets */; };
+		226ACBDD1E4EC86300AC3CCC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 226ACBDB1E4EC86300AC3CCC /* LaunchScreen.storyboard */; };
+		226ACBE81E4EC86300AC3CCC /* CruiseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226ACBE71E4EC86300AC3CCC /* CruiseUITests.swift */; };
+		22BDA42E1E4F9DD400868E5F /* ExampleGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BDA42D1E4F9DD400868E5F /* ExampleGameViewController.swift */; };
+		22BDA4301E4FB7EC00868E5F /* Cruise.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 22BDA42F1E4FB7EC00868E5F /* Cruise.scnassets */; };
+		22BDA4321E4FBFEE00868E5F /* ShapeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BDA4311E4FBFEE00868E5F /* ShapeType.swift */; };
+		22BDA43B1E4FC38400868E5F /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BDA4341E4FC38400868E5F /* Double+Extensions.swift */; };
+		22BDA43C1E4FC38400868E5F /* Float+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BDA4351E4FC38400868E5F /* Float+Extensions.swift */; };
+		22BDA43D1E4FC38400868E5F /* GameHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BDA4361E4FC38400868E5F /* GameHelper.swift */; };
+		22BDA43E1E4FC38400868E5F /* Generics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BDA4371E4FC38400868E5F /* Generics.swift */; };
+		22BDA43F1E4FC38400868E5F /* Int+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BDA4381E4FC38400868E5F /* Int+Extensions.swift */; };
+		22BDA4401E4FC38400868E5F /* SCNAction+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BDA4391E4FC38400868E5F /* SCNAction+Extensions.swift */; };
+		22BDA4411E4FC38400868E5F /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BDA43A1E4FC38400868E5F /* UIColor+Extensions.swift */; };
+		22BDA4451E4FD0FA00868E5F /* Trail.scnp in Resources */ = {isa = PBXBuildFile; fileRef = 22BDA4431E4FD0FA00868E5F /* Trail.scnp */; };
+		22BDA4461E4FD0FA00868E5F /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 22BDA4441E4FD0FA00868E5F /* spark.png */; };
+		22BDA4491E5028F900868E5F /* Explosion.scnp in Resources */ = {isa = PBXBuildFile; fileRef = 22BDA4471E5028F900868E5F /* Explosion.scnp */; };
+		22BDA44A1E5028F900868E5F /* bokeh.png in Resources */ = {isa = PBXBuildFile; fileRef = 22BDA4481E5028F900868E5F /* bokeh.png */; };
+		22BDA44C1E5035BE00868E5F /* GeometryFighterGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BDA44B1E5035BE00868E5F /* GeometryFighterGameViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		226ACBE41E4EC86300AC3CCC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 226ACBC51E4EC86300AC3CCC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 226ACBCC1E4EC86300AC3CCC;
+			remoteInfo = Cruise;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		22037EBF1E51622000DFEC6A /* GameUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameUtils.swift; sourceTree = "<group>"; };
+		22037EC01E51622000DFEC6A /* SCNVector3+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SCNVector3+Extensions.swift"; sourceTree = "<group>"; };
+		226ACBCD1E4EC86300AC3CCC /* Cruise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cruise.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		226ACBD01E4EC86300AC3CCC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		226ACBD41E4EC86300AC3CCC /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		226ACBD71E4EC86300AC3CCC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		226ACBD91E4EC86300AC3CCC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		226ACBDC1E4EC86300AC3CCC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		226ACBDE1E4EC86300AC3CCC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		226ACBE31E4EC86300AC3CCC /* CruiseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CruiseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		226ACBE71E4EC86300AC3CCC /* CruiseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CruiseUITests.swift; sourceTree = "<group>"; };
+		226ACBE91E4EC86300AC3CCC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		22BDA42D1E4F9DD400868E5F /* ExampleGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleGameViewController.swift; sourceTree = "<group>"; };
+		22BDA42F1E4FB7EC00868E5F /* Cruise.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = Cruise.scnassets; sourceTree = "<group>"; };
+		22BDA4311E4FBFEE00868E5F /* ShapeType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShapeType.swift; sourceTree = "<group>"; };
+		22BDA4341E4FC38400868E5F /* Double+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
+		22BDA4351E4FC38400868E5F /* Float+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Float+Extensions.swift"; sourceTree = "<group>"; };
+		22BDA4361E4FC38400868E5F /* GameHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameHelper.swift; sourceTree = "<group>"; };
+		22BDA4371E4FC38400868E5F /* Generics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Generics.swift; sourceTree = "<group>"; };
+		22BDA4381E4FC38400868E5F /* Int+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+Extensions.swift"; sourceTree = "<group>"; };
+		22BDA4391E4FC38400868E5F /* SCNAction+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SCNAction+Extensions.swift"; sourceTree = "<group>"; };
+		22BDA43A1E4FC38400868E5F /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		22BDA4431E4FD0FA00868E5F /* Trail.scnp */ = {isa = PBXFileReference; lastKnownFileType = file.scp; path = Trail.scnp; sourceTree = "<group>"; };
+		22BDA4441E4FD0FA00868E5F /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
+		22BDA4471E5028F900868E5F /* Explosion.scnp */ = {isa = PBXFileReference; lastKnownFileType = file.scp; path = Explosion.scnp; sourceTree = "<group>"; };
+		22BDA4481E5028F900868E5F /* bokeh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bokeh.png; sourceTree = "<group>"; };
+		22BDA44B1E5035BE00868E5F /* GeometryFighterGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeometryFighterGameViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		226ACBCA1E4EC86300AC3CCC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		226ACBE01E4EC86300AC3CCC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		226ACBC41E4EC86300AC3CCC = {
+			isa = PBXGroup;
+			children = (
+				226ACBCF1E4EC86300AC3CCC /* Cruise */,
+				226ACBE61E4EC86300AC3CCC /* CruiseUITests */,
+				226ACBCE1E4EC86300AC3CCC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		226ACBCE1E4EC86300AC3CCC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				226ACBCD1E4EC86300AC3CCC /* Cruise.app */,
+				226ACBE31E4EC86300AC3CCC /* CruiseUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		226ACBCF1E4EC86300AC3CCC /* Cruise */ = {
+			isa = PBXGroup;
+			children = (
+				226ACBD91E4EC86300AC3CCC /* Assets.xcassets */,
+				22BDA42F1E4FB7EC00868E5F /* Cruise.scnassets */,
+				226ACBDE1E4EC86300AC3CCC /* Info.plist */,
+				226ACBD01E4EC86300AC3CCC /* AppDelegate.swift */,
+				22BDA42D1E4F9DD400868E5F /* ExampleGameViewController.swift */,
+				226ACBD41E4EC86300AC3CCC /* GameViewController.swift */,
+				22BDA44B1E5035BE00868E5F /* GeometryFighterGameViewController.swift */,
+				22BDA4311E4FBFEE00868E5F /* ShapeType.swift */,
+				22BDA4331E4FC38400868E5F /* GameUtils */,
+				226ACBDB1E4EC86300AC3CCC /* LaunchScreen.storyboard */,
+				226ACBD61E4EC86300AC3CCC /* Main.storyboard */,
+				22BDA4421E4FD0D200868E5F /* Particles */,
+			);
+			path = Cruise;
+			sourceTree = "<group>";
+		};
+		226ACBE61E4EC86300AC3CCC /* CruiseUITests */ = {
+			isa = PBXGroup;
+			children = (
+				226ACBE71E4EC86300AC3CCC /* CruiseUITests.swift */,
+				226ACBE91E4EC86300AC3CCC /* Info.plist */,
+			);
+			path = CruiseUITests;
+			sourceTree = "<group>";
+		};
+		22BDA4331E4FC38400868E5F /* GameUtils */ = {
+			isa = PBXGroup;
+			children = (
+				22037EBF1E51622000DFEC6A /* GameUtils.swift */,
+				22037EC01E51622000DFEC6A /* SCNVector3+Extensions.swift */,
+				22BDA4341E4FC38400868E5F /* Double+Extensions.swift */,
+				22BDA4351E4FC38400868E5F /* Float+Extensions.swift */,
+				22BDA4361E4FC38400868E5F /* GameHelper.swift */,
+				22BDA4371E4FC38400868E5F /* Generics.swift */,
+				22BDA4381E4FC38400868E5F /* Int+Extensions.swift */,
+				22BDA4391E4FC38400868E5F /* SCNAction+Extensions.swift */,
+				22BDA43A1E4FC38400868E5F /* UIColor+Extensions.swift */,
+			);
+			path = GameUtils;
+			sourceTree = "<group>";
+		};
+		22BDA4421E4FD0D200868E5F /* Particles */ = {
+			isa = PBXGroup;
+			children = (
+				22BDA4431E4FD0FA00868E5F /* Trail.scnp */,
+				22BDA4441E4FD0FA00868E5F /* spark.png */,
+				22BDA4471E5028F900868E5F /* Explosion.scnp */,
+				22BDA4481E5028F900868E5F /* bokeh.png */,
+			);
+			name = Particles;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		226ACBCC1E4EC86300AC3CCC /* Cruise */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 226ACBEC1E4EC86300AC3CCC /* Build configuration list for PBXNativeTarget "Cruise" */;
+			buildPhases = (
+				226ACBC91E4EC86300AC3CCC /* Sources */,
+				226ACBCA1E4EC86300AC3CCC /* Frameworks */,
+				226ACBCB1E4EC86300AC3CCC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Cruise;
+			productName = Cruise;
+			productReference = 226ACBCD1E4EC86300AC3CCC /* Cruise.app */;
+			productType = "com.apple.product-type.application";
+		};
+		226ACBE21E4EC86300AC3CCC /* CruiseUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 226ACBEF1E4EC86300AC3CCC /* Build configuration list for PBXNativeTarget "CruiseUITests" */;
+			buildPhases = (
+				226ACBDF1E4EC86300AC3CCC /* Sources */,
+				226ACBE01E4EC86300AC3CCC /* Frameworks */,
+				226ACBE11E4EC86300AC3CCC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				226ACBE51E4EC86300AC3CCC /* PBXTargetDependency */,
+			);
+			name = CruiseUITests;
+			productName = CruiseUITests;
+			productReference = 226ACBE31E4EC86300AC3CCC /* CruiseUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		226ACBC51E4EC86300AC3CCC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = MartianRover;
+				TargetAttributes = {
+					226ACBCC1E4EC86300AC3CCC = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 4N7S43D8NS;
+						ProvisioningStyle = Automatic;
+					};
+					226ACBE21E4EC86300AC3CCC = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 4N7S43D8NS;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 226ACBCC1E4EC86300AC3CCC;
+					};
+				};
+			};
+			buildConfigurationList = 226ACBC81E4EC86300AC3CCC /* Build configuration list for PBXProject "Cruise" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 226ACBC41E4EC86300AC3CCC;
+			productRefGroup = 226ACBCE1E4EC86300AC3CCC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				226ACBCC1E4EC86300AC3CCC /* Cruise */,
+				226ACBE21E4EC86300AC3CCC /* CruiseUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		226ACBCB1E4EC86300AC3CCC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22BDA4451E4FD0FA00868E5F /* Trail.scnp in Resources */,
+				22BDA4491E5028F900868E5F /* Explosion.scnp in Resources */,
+				22BDA4461E4FD0FA00868E5F /* spark.png in Resources */,
+				22BDA4301E4FB7EC00868E5F /* Cruise.scnassets in Resources */,
+				226ACBDD1E4EC86300AC3CCC /* LaunchScreen.storyboard in Resources */,
+				22BDA44A1E5028F900868E5F /* bokeh.png in Resources */,
+				226ACBDA1E4EC86300AC3CCC /* Assets.xcassets in Resources */,
+				226ACBD81E4EC86300AC3CCC /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		226ACBE11E4EC86300AC3CCC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		226ACBC91E4EC86300AC3CCC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22BDA44C1E5035BE00868E5F /* GeometryFighterGameViewController.swift in Sources */,
+				22037EC11E51622000DFEC6A /* GameUtils.swift in Sources */,
+				22BDA42E1E4F9DD400868E5F /* ExampleGameViewController.swift in Sources */,
+				22BDA43E1E4FC38400868E5F /* Generics.swift in Sources */,
+				22037EC21E51622000DFEC6A /* SCNVector3+Extensions.swift in Sources */,
+				22BDA4321E4FBFEE00868E5F /* ShapeType.swift in Sources */,
+				22BDA43F1E4FC38400868E5F /* Int+Extensions.swift in Sources */,
+				226ACBD51E4EC86300AC3CCC /* GameViewController.swift in Sources */,
+				226ACBD11E4EC86300AC3CCC /* AppDelegate.swift in Sources */,
+				22BDA4401E4FC38400868E5F /* SCNAction+Extensions.swift in Sources */,
+				22BDA43C1E4FC38400868E5F /* Float+Extensions.swift in Sources */,
+				22BDA4411E4FC38400868E5F /* UIColor+Extensions.swift in Sources */,
+				22BDA43D1E4FC38400868E5F /* GameHelper.swift in Sources */,
+				22BDA43B1E4FC38400868E5F /* Double+Extensions.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		226ACBDF1E4EC86300AC3CCC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				226ACBE81E4EC86300AC3CCC /* CruiseUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		226ACBE51E4EC86300AC3CCC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 226ACBCC1E4EC86300AC3CCC /* Cruise */;
+			targetProxy = 226ACBE41E4EC86300AC3CCC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		226ACBD61E4EC86300AC3CCC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				226ACBD71E4EC86300AC3CCC /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		226ACBDB1E4EC86300AC3CCC /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				226ACBDC1E4EC86300AC3CCC /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		226ACBEA1E4EC86300AC3CCC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		226ACBEB1E4EC86300AC3CCC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		226ACBED1E4EC86300AC3CCC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 4N7S43D8NS;
+				INFOPLIST_FILE = Cruise/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.martianrover.Cruise;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		226ACBEE1E4EC86300AC3CCC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 4N7S43D8NS;
+				INFOPLIST_FILE = Cruise/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.martianrover.Cruise;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		226ACBF01E4EC86300AC3CCC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = 4N7S43D8NS;
+				INFOPLIST_FILE = CruiseUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.martianrover.CruiseUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = Cruise;
+			};
+			name = Debug;
+		};
+		226ACBF11E4EC86300AC3CCC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = 4N7S43D8NS;
+				INFOPLIST_FILE = CruiseUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.martianrover.CruiseUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = Cruise;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		226ACBC81E4EC86300AC3CCC /* Build configuration list for PBXProject "Cruise" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				226ACBEA1E4EC86300AC3CCC /* Debug */,
+				226ACBEB1E4EC86300AC3CCC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		226ACBEC1E4EC86300AC3CCC /* Build configuration list for PBXNativeTarget "Cruise" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				226ACBED1E4EC86300AC3CCC /* Debug */,
+				226ACBEE1E4EC86300AC3CCC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		226ACBEF1E4EC86300AC3CCC /* Build configuration list for PBXNativeTarget "CruiseUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				226ACBF01E4EC86300AC3CCC /* Debug */,
+				226ACBF11E4EC86300AC3CCC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 226ACBC51E4EC86300AC3CCC /* Project object */;
+}
