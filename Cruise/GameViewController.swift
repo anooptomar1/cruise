@@ -10,38 +10,30 @@ import UIKit
 import SceneKit
 
 enum ColliderType: Int {
-    case ball     = 0b0001
-    case barrier  = 0b0010
-    case brick    = 0b0100
-    case paddle   = 0b1000
+    case geoid     = 0b0001
+    case vehicle  = 0b0010
+//    case third    = 0b0100
+//    case fourth   = 0b1000
 }
 
 class GameViewController: UIViewController {
     
     var scnView: SCNView!
     var scnScene: SCNScene!
-    var horizontalCameraNode: SCNNode!
-    var verticalCameraNode: SCNNode!
-    var paddleNode: SCNNode!
-    var spawnTime: TimeInterval = 0
-    var lastContactNode: SCNNode!
-    var game = GameHelper.sharedInstance
-    var sounds:[String:SCNAudioSource] = [:]
-    var ballNode: SCNNode!
     var touchX: CGFloat = 0
-    var paddleX: Float = 0
-    var floorNode: SCNNode!
-    var bricksNode: SCNNode!
+    var game = GameHelper.sharedInstance
+    var vehicleCameraNode: SCNNode!
+    var lastContactNode: SCNNode!
+    var geoidNode: SCNNode!
+    var vehicleNode: SCNNode!
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         setupScene()
         setupCameras()
         setupNodes()
-        setupHUD()
-        setupSounds()
+//        setupHUD()
     }
 
     override var shouldAutorotate: Bool {
@@ -63,49 +55,48 @@ class GameViewController: UIViewController {
     }
     
     func setupNodes() {
-        ballNode = scnScene.rootNode.childNode(withName: "Ball", recursively: true)!
-        bricksNode = scnScene.rootNode.childNode(withName: "Bricks", recursively: true)!
-        paddleNode = scnScene.rootNode.childNode(withName: "Paddle", recursively: true)!
+        geoidNode = scnScene.rootNode.childNode(withName: "Geoid", recursively: true)!
+        vehicleNode = scnScene.rootNode.childNode(withName: "Vehicle", recursively: true)!
         
-        ballNode.physicsBody?.contactTestBitMask =
-            ColliderType.barrier.rawValue |
-            ColliderType.brick.rawValue |
-            ColliderType.paddle.rawValue
-        
-        floorNode = scnScene.rootNode.childNode(withName: "Floor", recursively: true)!
+        geoidNode.physicsBody?.contactTestBitMask =
+            ColliderType.vehicle.rawValue
 
-        verticalCameraNode.constraints =
-            [SCNLookAtConstraint(target: floorNode)]
-        horizontalCameraNode.constraints =
-            [SCNLookAtConstraint(target: floorNode)]
+        let xfm = SCNTransformConstraint(inWorldSpace: true) { (node, matrix) -> SCNMatrix4 in
+            //
+            let vPos = self.vehicleNode.presentation.position;
+            let targetPos = SCNVector3Make(vPos.x + (vPos.x / fabs(vPos.x) * 3),
+                                           vPos.y,
+                                           vPos.z + (vPos.z / fabs(vPos.z) * 3));
+            var cameraPos = node.position;
+            let cameraDamping = Float(1.0);
+            cameraPos = SCNVector3Make(cameraPos.x * Float(1.0 - cameraDamping) + targetPos.x * cameraDamping,
+                                       cameraPos.y * Float(1.0 - cameraDamping) + targetPos.y * cameraDamping,
+                                       cameraPos.z * Float(1.0 - cameraDamping) + targetPos.z * cameraDamping);
+
+            return SCNMatrix4Translate(node.transform,
+                                       cameraPos.x-node.position.x,
+                                       cameraPos.y-node.position.y,
+                                       cameraPos.z-node.position.z);
+        }
+
+        let look = SCNLookAtConstraint(target: geoidNode)
+        look.isGimbalLockEnabled = true
+        vehicleCameraNode.constraints = [xfm, look]
+
+        
     }
     
     func setupScene() {
-        scnScene = SCNScene(named: "Cruise.scnassets/Scenes/Breakout.scn")
+        scnScene = SCNScene(named: "Cruise.scnassets/Scenes/World1.scn")
         scnView.scene = scnScene
-        scnScene.background.contents = "Cruise.scnassets/Textures/Background_Diffuse.png"
-        
         scnScene.physicsWorld.contactDelegate = self
     }
     
     func setupCameras() {
-        horizontalCameraNode = scnScene.rootNode.childNode(withName:
-            "HorizontalCamera", recursively: true)!
-        verticalCameraNode = scnScene.rootNode.childNode(withName:
-            "VerticalCamera", recursively: true)!
-    }
-    
-    func setupSounds() {
-        game.loadSound(name: "Paddle",
-                       fileNamed: "Cruise.scnassets/Sounds/Paddle.wav")
-        game.loadSound(name: "Block0",
-                       fileNamed: "Cruise.scnassets/Sounds/Block0.wav")
-        game.loadSound(name: "Block1",
-                       fileNamed: "Cruise.scnassets/Sounds/Block1.wav")
-        game.loadSound(name: "Block2",
-                       fileNamed: "Cruise.scnassets/Sounds/Block2.wav")
-        game.loadSound(name: "Barrier",
-                       fileNamed: "Cruise.scnassets/Sounds/Barrier.wav")
+        vehicleCameraNode = scnScene.rootNode.childNode(withName:
+            "VehicleCamera", recursively: true)!
+        
+        scnView.pointOfView = vehicleCameraNode
     }
     
     func setupHUD() {
@@ -114,42 +105,27 @@ class GameViewController: UIViewController {
     }
     
     func cleanScene() {
-        for node in scnScene.rootNode.childNodes {
-            if node.presentation.position.y < -2 {
-                node.removeFromParentNode()
-            }
-        }
     }
     
     func handleTouchFor(node: SCNNode) {
-        node.removeFromParentNode()
-        createExplosion(geometry: node.geometry!, position: node.presentation.position, rotation: node.presentation.rotation)
-        game.score += 1
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
             let location = touch.location(in: scnView)
             touchX = location.x
-            paddleX = paddleNode.position.x
+//            paddleX = paddleNode.position.x
         }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for touch in touches {
-            let location = touch.location(in: scnView)
-            paddleNode.position.x = paddleX + (Float(location.x - touchX) * 0.1)
-            
-            if paddleNode.position.x > 4.25 {
-                paddleNode.position.x = 4.25
-            }
-            else if paddleNode.position.x < -4.25 {
-                paddleNode.position.x = -4.25
-            }
-        }
+//        for touch in touches {
+//            let location = touch.location(in: scnView)
+//            paddleNode.position.x = paddleX + (Float(location.x - touchX) * 0.1)
+//        }
         
-        verticalCameraNode.position.x = paddleNode.position.x
-        horizontalCameraNode.position.x = paddleNode.position.x
+//        verticalCameraNode.position.x = paddleNode.position.x
+//        horizontalCameraNode.position.x = paddleNode.position.x
     }
     
     func createTrail(color: UIColor, geometry: SCNGeometry) -> SCNParticleSystem {
@@ -165,42 +141,52 @@ class GameViewController: UIViewController {
         explosion.particleColor = geometry.materials.first?.diffuse.contents as! UIColor
         explosion.birthLocation = .surface
         
-//        let rotationMatrix = SCNMatrix4MakeRotation(rotation.w, rotation.x, rotation.y, rotation.z)
-        let translationMatrix = SCNMatrix4MakeTranslation(position.x, position.y, position.z + bricksNode.position.z)
-//        let transformMatrix = SCNMatrix4Mult(rotationMatrix, translationMatrix)
-        scnScene.addParticleSystem(explosion, transform: translationMatrix)
+//        let translationMatrix = SCNMatrix4MakeTranslation(position.x, position.y, position.z + bricksNode.position.z)
+//        scnScene.addParticleSystem(explosion, transform: translationMatrix)
     }
     
-    override func viewWillTransition(to size: CGSize, with coordinator:
-        UIViewControllerTransitionCoordinator) {
-        let deviceOrientation = UIDevice.current.orientation
-        switch(deviceOrientation) {
-        case .portrait:
-            scnView.pointOfView = verticalCameraNode
-        default:
-            scnView.pointOfView = horizontalCameraNode
-        }
-    }
+//    override func viewWillTransition(to size: CGSize, with coordinator:
+//        UIViewControllerTransitionCoordinator) {
+//        let deviceOrientation = UIDevice.current.orientation
+//        switch(deviceOrientation) {
+//        case .portrait:
+//            scnView.pointOfView = verticalCameraNode
+//        default:
+//            scnView.pointOfView = horizontalCameraNode
+//        }
+//    }
     
     
 }
 
 extension GameViewController: SCNSceneRendererDelegate {
+//    func renderer(_ renderer: SCNSceneRenderer, willRenderScene scene: SCNScene, atTime time: TimeInterval) {
+//    func renderer(_ renderer: SCNSceneRenderer, didSimulatePhysicsAtTime time: TimeInterval) {
     func renderer(_ : SCNSceneRenderer, updateAtTime time: TimeInterval ) {
-        if (time > spawnTime) {
-            spawnTime = time + TimeInterval(Float.random(min: 1.0, max: 1.5))
-        }
+    
+//        let vPos = vehicleNode.presentation.position;
+//        let targetPos = SCNVector3Make(vPos.x + (vPos.x / fabs(vPos.x) * 4),
+//                                       vPos.y + (vPos.y / fabs(vPos.y) * 4),
+//                                       vPos.z + (vPos.z / fabs(vPos.z) * 4));
+//        var cameraPos = vehicleCameraNode.position;
+//        let cameraDamping = Float(0.75);
+//        cameraPos = SCNVector3Make(cameraPos.x * Float(1.0 - cameraDamping) + targetPos.x * cameraDamping,
+//                                   cameraPos.y * Float(1.0 - cameraDamping) + targetPos.y * cameraDamping,
+//                                   cameraPos.z * Float(1.0 - cameraDamping) + targetPos.z * cameraDamping);
+//
+//        vehicleCameraNode.position = cameraPos;
+//        print(Int(cameraPos.x), Int(cameraPos.y), Int(cameraPos.z), "--",
+//              Int(targetPos.x), Int(targetPos.y), Int(targetPos.z));
         
-        cleanScene()
-        game.updateHUD()
     }
+
 }
 
 extension GameViewController: SCNPhysicsContactDelegate {
     func physicsWorld(_ world: SCNPhysicsWorld, didBegin contact: SCNPhysicsContact) {
         var contactNode: SCNNode!
         
-        if contact.nodeA.name == "Ball" {
+        if contact.nodeA.name == "Geoid" {
             contactNode = contact.nodeB
         }
         else {
@@ -213,58 +199,5 @@ extension GameViewController: SCNPhysicsContactDelegate {
         
         lastContactNode = contactNode
         
-        if contactNode.physicsBody?.categoryBitMask ==
-            ColliderType.barrier.rawValue {
-            
-            game.playSound(node: scnScene.rootNode, name: "Barrier")
-
-            if contactNode.name == "Bottom" {
-                game.lives -= 1
-                if game.lives == 0 {
-                    game.saveState()
-                    game.reset()
-                }
-            }
-            else {
-                if (ballNode.physicsBody!.velocity.xzAngle > -5) {
-                    ballNode.physicsBody!.velocity.xzAngle +=
-                        (convertToRadians(angle: Float.random(min: 0, max: 20)))
-                }
-
-            }
-        }
-
-        if contactNode.physicsBody?.categoryBitMask ==
-            ColliderType.brick.rawValue {
-            
-            game.playSound(node: scnScene.rootNode, name: "Block\(Int.random(min: 0, max: 2))")
-            
-            createExplosion(geometry: contactNode.geometry!, position: contactNode.position, rotation: contactNode.rotation)
-
-            game.score += 1
-            contactNode.isHidden = true
-            contactNode.runAction(
-                SCNAction.waitForDurationThenRunBlock(duration: 60) {
-                    (node:SCNNode!) -> Void in
-                    node.isHidden = false
-            })
-        }
-
-        if contactNode.physicsBody?.categoryBitMask ==
-            ColliderType.paddle.rawValue {
-
-            game.playSound(node: scnScene.rootNode, name: "Paddle")
-
-            if contactNode.name == "Left" {
-                ballNode.physicsBody!.velocity.xzAngle -=
-                    (convertToRadians(angle: Float.random(min: 15, max: 25)))
-            }
-            if contactNode.name == "Right" {
-                ballNode.physicsBody!.velocity.xzAngle +=
-                    (convertToRadians(angle: Float.random(min: 15, max: 25)))
-            }
-        }
-
-        ballNode.physicsBody?.velocity.length = 2.5
     }
 }
