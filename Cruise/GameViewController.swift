@@ -67,6 +67,9 @@ class GameViewController: UIViewController {
             let targetPos = SCNVector3Make(vPos.x + (vPos.x / fabs(vPos.x) * 3),
                                            vPos.y,
                                            vPos.z + (vPos.z / fabs(vPos.z) * 3));
+            
+//            let targetPos = vectorExtend(vPos, 4);
+            
             var cameraPos = node.position;
             let cameraDamping = Float(1.0);
             cameraPos = SCNVector3Make(cameraPos.x * Float(1.0 - cameraDamping) + targetPos.x * cameraDamping,
@@ -159,11 +162,23 @@ class GameViewController: UIViewController {
     
 }
 
+let speed:Float = 0.1;
+
 extension GameViewController: SCNSceneRendererDelegate {
 //    func renderer(_ renderer: SCNSceneRenderer, willRenderScene scene: SCNScene, atTime time: TimeInterval) {
 //    func renderer(_ renderer: SCNSceneRenderer, didSimulatePhysicsAtTime time: TimeInterval) {
     func renderer(_ : SCNSceneRenderer, updateAtTime time: TimeInterval ) {
     
+        
+        vehicleNode.position += glk2scn(vector: GLKVector3MultiplyScalar(scn2glk(vector:getZForward(node: vehicleNode)), speed))
+        
+        // nb scalar multiply requires overload of * func
+        // if node has a physics body, you might need to use the presentationNode, eg:
+        // getZForward(ship.presentationNode)
+        // though you probably don't want to be directly modifying the position of a node with a physics body
+
+        
+        
 //        let vPos = vehicleNode.presentation.position;
 //        let targetPos = SCNVector3Make(vPos.x + (vPos.x / fabs(vPos.x) * 4),
 //                                       vPos.y + (vPos.y / fabs(vPos.y) * 4),
@@ -201,3 +216,32 @@ extension GameViewController: SCNPhysicsContactDelegate {
         
     }
 }
+
+func vectorMult(left: SCNVector3, right: Float) -> SCNVector3 {
+    let x = left.x * right
+    let y = left.y * right
+    let z = left.z * right
+    
+    return SCNVector3(x: x, y: y, z: z)
+}
+
+func vectorExtend(left: SCNVector3, right: Float) -> SCNVector3 {
+    let x = left.x * right
+    let y = left.y * right
+    let z = left.z * right
+    
+    return SCNVector3(x: x, y: y, z: z)
+}
+
+func getZForward(node: SCNNode) -> SCNVector3 {
+    return SCNVector3(node.worldTransform.m31, node.worldTransform.m32, node.worldTransform.m33)
+}
+
+func glk2scn(vector: GLKVector3) -> SCNVector3 {
+    return SCNVector3Make(vector.x, vector.y, vector.z);
+}
+
+func scn2glk(vector: SCNVector3) -> GLKVector3 {
+    return GLKVector3Make(vector.x, vector.y, vector.z);
+}
+
