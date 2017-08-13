@@ -48,7 +48,7 @@ class GameViewController: UIViewController {
         scnView = self.view as! SCNView
         
         scnView.showsStatistics = true
-        scnView.allowsCameraControl = false
+        scnView.allowsCameraControl = true
         scnView.autoenablesDefaultLighting = true
         scnView.delegate = self
         scnView.isPlaying = true
@@ -60,7 +60,7 @@ class GameViewController: UIViewController {
         
         geoidNode.physicsBody?.contactTestBitMask =
             ColliderType.vehicle.rawValue
-
+/*
         let xfm = SCNTransformConstraint(inWorldSpace: true) { (node, matrix) -> SCNMatrix4 in
             //
             let vPos = self.vehicleNode.presentation.position;
@@ -85,7 +85,7 @@ class GameViewController: UIViewController {
         let look = SCNLookAtConstraint(target: geoidNode)
         look.isGimbalLockEnabled = true
         vehicleCameraNode.constraints = [xfm, look]
-
+*/
         
     }
     
@@ -96,10 +96,13 @@ class GameViewController: UIViewController {
     }
     
     func setupCameras() {
-        vehicleCameraNode = scnScene.rootNode.childNode(withName:
-            "VehicleCamera", recursively: true)!
+//        vehicleCameraNode = scnScene.rootNode.childNode(withName:
+//            "VehicleCamera", recursively: true)!
         
-        scnView.pointOfView = vehicleCameraNode
+//        scnView.pointOfView = vehicleCameraNode
+
+        let defaultCameraNode:SCNNode! = scnView.pointOfView
+        print("default camera pos", defaultCameraNode.position)
     }
     
     func setupHUD() {
